@@ -1,107 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-  // Icon declarations
-
-          {/* Learn More Modal */}
-          {showLearnMoreModal && (
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-              <div className="bg-white dark:bg-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-lg">
-                <div className="p-6 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
-                  <h3 className="text-xl font-semibold">Employer Spotlight Program</h3>
-                  <button 
-                    onClick={() => setShowLearnMoreModal(false)}
-                    className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700"
-                  >
-                    <XIcon size={24} />
-                  </button>
-                </div>
-                <div className="p-6">
-                  <h4 className="text-lg font-semibold mb-4">Benefits of the Spotlight Program</h4>
-                  <ul className="space-y-3 mb-6">
-                    <li className="flex items-start gap-2">
-                      <CheckCircleIcon size={20} className="text-primary mt-1 flex-shrink-0" />
-                      <span>Featured placement on our homepage for one week</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircleIcon size={20} className="text-primary mt-1 flex-shrink-0" />
-                      <span>Highlighted in our weekly newsletter to 100,000+ job seekers</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircleIcon size={20} className="text-primary mt-1 flex-shrink-0" />
-                      <span>Custom branded content about your company culture and benefits</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircleIcon size={20} className="text-primary mt-1 flex-shrink-0" />
-                      <span>Priority ranking in job search results for all your listings</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircleIcon size={20} className="text-primary mt-1 flex-shrink-0" />
-                      <span>Social media promotion across all our platforms</span>
-                    </li>
-                  </ul>
-                  
-                  <div className="bg-surface-50 dark:bg-surface-900 p-4 rounded-lg mb-6">
-                    <h5 className="font-medium mb-2">Spotlight Success Story</h5>
-                    <p className="text-surface-600 dark:text-surface-300 text-sm italic">
-                      "After being featured in the Employer Spotlight, we saw a 300% increase in qualified applications and filled our open positions within two weeks!" — Maria G., Recruitment Manager
-                    </p>
-                  </div>
-                  
-                  <div className="mt-6 flex justify-end gap-4">
-                    <button 
-                      type="button" 
-                      onClick={() => setShowLearnMoreModal(false)}
-                      className="btn-ghost"
-                    >
-                      Cancel
-                    </button>
-                    <button 
-                      onClick={handleSpotlightRequest} 
-                      className="btn-primary"
-                    >
-                      Request Spotlight
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Spotlight Modal */}
-          {showSpotlightModal && (
-            /* Implementation would go here */
-            null
-          )}
 import { toast } from 'react-toastify';
-import getIcon from '../utils/iconUtils'; 
+import getIcon from '../utils/iconUtils';
 
-  // State for modals
-  const [showShortlistModal, setShowShortlistModal] = useState(false);
-  const [showLearnMoreModal, setShowLearnMoreModal] = useState(false);
-  const [showSpotlightModal, setShowSpotlightModal] = useState(false);
-  const [showEnhanceProfileModal, setShowEnhanceProfileModal] = useState(false);
-  const [shortlistData, setShortlistData] = useState({
-    companyName: '',
-    contactName: '',
-    email: '',
-    phone: '',
-    position: '',
-    requirements: '',
-    timeline: '',
-  });
-
-  const [profileData, setProfileData] = useState({
-    companyName: '',
-    industry: '',
-    companySize: '',
-    founded: '',
-    website: '',
-    companyDescription: '',
-    benefits: '',
-    culture: '',
-    logoUrl: '',
-  });
-
+const Employers = () => {
   const [formData, setFormData] = useState({
     jobTitle: '',
     company: '',
@@ -112,6 +14,19 @@ import getIcon from '../utils/iconUtils';
     requirements: '',
     email: '',
     phone: ''
+  });
+
+  // State for modals
+  const [showShortlistModal, setShowShortlistModal] = useState(false);
+  const [showLearnMoreModal, setShowLearnMoreModal] = useState(false);
+  const [shortlistData, setShortlistData] = useState({
+    companyName: '',
+    contactName: '',
+    email: '',
+    phone: '',
+    position: '',
+    requirements: '',
+    timeline: '',
   });
 
   const handleChange = (e) => {
@@ -126,22 +41,6 @@ import getIcon from '../utils/iconUtils';
       ...prevData,
       [name]: value
     }));
-  };
-
-  const handleProfileChange = (e) => {
-    const { name, value } = e.target;
-    setProfileData(prevData => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
-
-  const handleSpotlightRequest = () => {
-    toast.success('Spotlight request submitted! Your company will be featured in our next spotlight.', {
-      position: "bottom-right",
-      autoClose: 3000,
-    });
-    setShowLearnMoreModal(false);
   };
 
   const handleSubmit = (e) => {
@@ -183,26 +82,6 @@ import getIcon from '../utils/iconUtils';
     setShowShortlistModal(false);
   };
 
-  const handleProfileSubmit = (e) => {
-    e.preventDefault();
-    toast.success('Profile enhancement request submitted! Your company profile will be updated soon.', {
-      position: "bottom-right",
-      autoClose: 3000,
-    });
-    setProfileData({
-      companyName: '',
-      industry: '',
-      companySize: '',
-      founded: '',
-      website: '',
-      companyDescription: '',
-      benefits: '',
-      culture: '',
-      logoUrl: '',
-    });
-    setShowEnhanceProfileModal(false);
-  };
-
   const BuildingIcon = getIcon('Building');
   const UsersIcon = getIcon('Users');
   const CheckCircleIcon = getIcon('CheckCircle');
@@ -217,8 +96,6 @@ import getIcon from '../utils/iconUtils';
   const AwardIcon = getIcon('Award');
   const TrendingUpIcon = getIcon('TrendingUp');
   const UsersRoundIcon = getIcon('UsersRound');
-  const GlobeIcon = getIcon('Globe');
-  const ImageIcon = getIcon('Image');
 
   return (
     <div className="bg-blue-50 dark:bg-blue-900 min-h-screen">
@@ -509,10 +386,7 @@ import getIcon from '../utils/iconUtils';
                       <span>Highlight your benefits, perks and company values</span>
                     </li>
                   </ul>
-                  <button 
-                    className="btn-secondary" 
-                    onClick={() => setShowEnhanceProfileModal(true)}
-                  >
+                  <button className="btn-secondary" onClick={() => toast.info('Coming soon! Enhanced employer profiles will be available next month.', { position: "bottom-right" })}>
                     Enhance Your Profile
                   </button>
                 </div>
@@ -520,28 +394,18 @@ import getIcon from '../utils/iconUtils';
                   <FileTextIcon size={64} className="text-primary mb-4" />
                   <h4 className="text-lg font-medium text-center mb-2">Featured Employer Spotlight</h4>
                   <p className="text-center mb-4">Get featured in our weekly employer spotlight and reach thousands of active job seekers.</p>
-                  <button className="btn-outline" onClick={() => setShowSpotlightModal(true)}>
-                    Request Spotlight
+                  <button className="btn-outline" onClick={() => setShowLearnMoreModal(true)}>
+                    Learn More
                   </button>
                 </div>
-              </div>
-              </div>
-              <div className="bg-gradient-to-br from-surface-100 to-surface-200 dark:from-surface-800 dark:to-surface-700 rounded-lg p-6 flex flex-col items-center justify-center backdrop-blur-sm mt-6">
-              
-                  <h4 className="text-lg font-medium text-center mb-2">Want to learn more?</h4>
-                <h4 className="text-lg font-medium text-center mb-2">Want to learn more?</h4>
-                <p className="text-center mb-4">Discover the benefits of our spotlight program and how it can help your company stand out.</p>
-                <button className="btn-outline" onClick={() => setShowLearnMoreModal(true)}>
-                  Learn More
-                </button>
               </div>
             </div>
           </section>
 
-          {/* Shortlist Modal - Changed to white background with shadow for better contrast */}
+          {/* Shortlist Modal - Implemented directly in the JSX to fix focus issues */}
           {showShortlistModal && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-              <div className="bg-white dark:bg-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-lg">
+              <div className="bg-gradient-to-b from-blue-50 to-white dark:from-blue-900 dark:to-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
                 <div className="p-6 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
                   <h3 className="text-xl font-semibold">Request Candidate Shortlisting</h3>
                   <button 
@@ -563,7 +427,7 @@ import getIcon from '../utils/iconUtils';
                           value={shortlistData.companyName}
                           onChange={handleShortlistChange}
                           required
-                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
+                          className="input-field"
                           placeholder="e.g. Acme Corporation"
                         />
                       </div>
@@ -576,7 +440,7 @@ import getIcon from '../utils/iconUtils';
                           value={shortlistData.contactName}
                           onChange={handleShortlistChange}
                           required
-                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
+                          className="input-field"
                           placeholder="e.g. John Smith"
                         />
                       </div>
@@ -589,7 +453,7 @@ import getIcon from '../utils/iconUtils';
                           value={shortlistData.email}
                           onChange={handleShortlistChange}
                           required
-                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
+                          className="input-field"
                           placeholder="e.g. john@company.com"
                         />
                       </div>
@@ -602,7 +466,7 @@ import getIcon from '../utils/iconUtils';
                           value={shortlistData.phone}
                           onChange={handleShortlistChange}
                           required
-                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
+                          className="input-field"
                           placeholder="e.g. (555) 123-4567"
                         />
                       </div>
@@ -615,7 +479,7 @@ import getIcon from '../utils/iconUtils';
                           value={shortlistData.position}
                           onChange={handleShortlistChange}
                           required
-                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
+                          className="input-field"
                           placeholder="e.g. Senior Developer"
                         />
                       </div>
@@ -628,7 +492,7 @@ import getIcon from '../utils/iconUtils';
                           onChange={handleShortlistChange}
                           rows={4}
                           required
-                          className="input-field resize-none bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
+                          className="input-field resize-none"
                           placeholder="Describe the skills, experience, and qualifications you're looking for"
                         ></textarea>
                       </div>
@@ -640,7 +504,7 @@ import getIcon from '../utils/iconUtils';
                           value={shortlistData.timeline}
                           onChange={handleShortlistChange}
                           required
-                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
+                          className="input-field"
                         >
                           <option value="" disabled>Select your timeline</option>
                           <option value="Urgent (1-2 weeks)">Urgent (1-2 weeks)</option>
@@ -668,163 +532,88 @@ import getIcon from '../utils/iconUtils';
             </div>
           )}
 
-          {/* Enhance Profile Modal - Made consistent with other modals */}
-          {showEnhanceProfileModal && (
+          {/* Learn More Modal - Implemented directly in the JSX to be consistent with ShortlistModal */}
+          {showLearnMoreModal && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-              <div className="bg-white dark:bg-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-lg">
+              <div className="bg-white dark:bg-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
                 <div className="p-6 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
-                  <h3 className="text-xl font-semibold">Enhance Your Company Profile</h3>
+                  <h3 className="text-xl font-semibold">Featured Employer Spotlight</h3>
                   <button 
-                    onClick={() => setShowEnhanceProfileModal(false)}
+                    onClick={() => setShowLearnMoreModal(false)}
                     className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700"
                   >
                     <XIcon size={24} />
                   </button>
                 </div>
                 <div className="p-6">
-                  <form onSubmit={handleProfileSubmit}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="companyName" className="block text-sm font-medium mb-2">Company Name</label>
-                        <input
-                          type="text"
-                          id="companyName"
-                          name="companyName"
-                          value={profileData.companyName}
-                          onChange={handleProfileChange}
-                          required
-                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
-                          placeholder="e.g. Acme Corporation"
-                        />
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold mb-2">What is Employer Spotlight?</h4>
+                    <p className="mb-4">
+                      The Featured Employer Spotlight is a premium service that highlights your company to thousands of active job seekers on our platform, increasing your visibility and attracting top talent.
+                    </p>
+                  </div>
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold mb-2">Benefits Include:</h4>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-2">
+                        <AwardIcon size={20} className="text-primary mt-1 flex-shrink-0" />
+                        <span>Featured placement on our homepage and job search results</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <TrendingUpIcon size={20} className="text-primary mt-1 flex-shrink-0" />
+                        <span>150% more profile views compared to standard listings</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <UsersRoundIcon size={20} className="text-primary mt-1 flex-shrink-0" />
+                        <span>Dedicated email campaign to relevant candidates</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircleIcon size={20} className="text-primary mt-1 flex-shrink-0" />
+                        <span>Professional company feature article on our blog</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <FileTextIcon size={20} className="text-primary mt-1 flex-shrink-0" />
+                        <span>Enhanced company profile with multimedia capabilities</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold mb-2">Pricing:</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="border border-surface-200 dark:border-surface-700 rounded-lg p-4">
+                        <h5 className="font-medium mb-2">Monthly Spotlight</h5>
+                        <p className="text-2xl font-bold mb-2">$499</p>
+                        <p className="text-sm">Featured for 4 weeks with all benefits</p>
                       </div>
-                      <div>
-                        <label htmlFor="industry" className="block text-sm font-medium mb-2">Industry</label>
-                        <input
-                          type="text"
-                          id="industry"
-                          name="industry"
-                          value={profileData.industry}
-                          onChange={handleProfileChange}
-                          required
-                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
-                          placeholder="e.g. Technology, Healthcare"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="companySize" className="block text-sm font-medium mb-2">Company Size</label>
-                        <select
-                          id="companySize"
-                          name="companySize"
-                          value={profileData.companySize}
-                          onChange={handleProfileChange}
-                          required
-                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
-                        >
-                          <option value="" disabled>Select company size</option>
-                          <option value="1-10 employees">1-10 employees</option>
-                          <option value="11-50 employees">11-50 employees</option>
-                          <option value="51-200 employees">51-200 employees</option>
-                          <option value="201-500 employees">201-500 employees</option>
-                          <option value="501-1000 employees">501-1000 employees</option>
-                          <option value="1001+ employees">1001+ employees</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label htmlFor="founded" className="block text-sm font-medium mb-2">Founded Year</label>
-                        <input
-                          type="text"
-                          id="founded"
-                          name="founded"
-                          value={profileData.founded}
-                          onChange={handleProfileChange}
-                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
-                          placeholder="e.g. 2010"
-                        />
-                      </div>
-                      <div className="md:col-span-2">
-                        <label htmlFor="website" className="block text-sm font-medium mb-2">Company Website</label>
-                        <div className="flex items-center space-x-2">
-                          <GlobeIcon size={20} className="text-surface-500" />
-                          <input
-                            type="url"
-                            id="website"
-                            name="website"
-                            value={profileData.website}
-                            onChange={handleProfileChange}
-                            className="input-field flex-1 bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
-                            placeholder="e.g. https://company.com"
-                          />
-                        </div>
-                      </div>
-                      <div className="md:col-span-2">
-                        <label htmlFor="companyDescription" className="block text-sm font-medium mb-2">Company Description</label>
-                        <textarea
-                          id="companyDescription"
-                          name="companyDescription"
-                          value={profileData.companyDescription}
-                          onChange={handleProfileChange}
-                          rows={4}
-                          required
-                          className="input-field resize-none bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
-                          placeholder="Tell us about your company, its mission, and what makes it unique"
-                        ></textarea>
-                      </div>
-                      <div className="md:col-span-2">
-                        <label htmlFor="benefits" className="block text-sm font-medium mb-2">Benefits & Perks</label>
-                        <textarea
-                          id="benefits"
-                          name="benefits"
-                          value={profileData.benefits}
-                          onChange={handleProfileChange}
-                          rows={3}
-                          className="input-field resize-none bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
-                          placeholder="List the benefits and perks you offer to employees"
-                        ></textarea>
-                      </div>
-                      <div className="md:col-span-2">
-                        <label htmlFor="culture" className="block text-sm font-medium mb-2">Company Culture</label>
-                        <textarea
-                          id="culture"
-                          name="culture"
-                          value={profileData.culture}
-                          onChange={handleProfileChange}
-                          rows={3}
-                          className="input-field resize-none bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
-                          placeholder="Describe your company culture, values, and work environment"
-                        ></textarea>
-                      </div>
-                      <div className="md:col-span-2">
-                        <label htmlFor="logoUrl" className="block text-sm font-medium mb-2">Company Logo URL</label>
-                        <div className="flex items-center space-x-2">
-                          <ImageIcon size={20} className="text-surface-500" />
-                          <input
-                            type="url"
-                            id="logoUrl"
-                            name="logoUrl"
-                            value={profileData.logoUrl}
-                            onChange={handleProfileChange}
-                            className="input-field flex-1 bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
-                            placeholder="e.g. https://company.com/logo.png"
-                          />
-                        </div>
-                        <p className="text-xs text-surface-500 mt-1">
-                          Submit a URL to your company logo (ideal dimensions: 400x400px)
-                        </p>
+                      <div className="border border-primary/30 rounded-lg p-4 bg-primary/5">
+                        <h5 className="font-medium mb-2">Quarterly Spotlight</h5>
+                        <p className="text-2xl font-bold mb-2">$1,299</p>
+                        <p className="text-sm">Featured for 12 weeks (save over 13%)</p>
                       </div>
                     </div>
-                    <div className="mt-8 flex justify-end gap-4">
-                      <button 
-                        type="button" 
-                        onClick={() => setShowEnhanceProfileModal(false)}
-                        className="btn-ghost"
-                      >
-                        Cancel
-                      </button>
-                      <button type="submit" className="btn-primary">
-                        Submit Profile
-                      </button>
-                    </div>
-                  </form>
+                  </div>
+                  <div className="mt-6 flex justify-end gap-4">
+                    <button 
+                      type="button" 
+                      onClick={() => setShowLearnMoreModal(false)}
+                      className="btn-ghost"
+                    >
+                      Close
+                    </button>
+                    <button 
+                      type="button" 
+                      onClick={() => {
+                        setShowLearnMoreModal(false);
+                        toast.success('Request sent! Our team will contact you about the Employer Spotlight program.', {
+                          position: "bottom-right",
+                          autoClose: 3000,
+                        });
+                      }}
+                      className="btn-primary"
+                    >
+                      Request Spotlight
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
