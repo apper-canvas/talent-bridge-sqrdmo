@@ -448,15 +448,15 @@ const Employers = () => {
             </div>
           </section>
 
-          {/* Shortlist Modal - Changed background color to light blue */}
+          {/* Shortlist Modal - Changed to white background with shadow for better contrast */}
           {showShortlistModal && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-              <div className="bg-blue-100 dark:bg-blue-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-                <div className="p-6 border-b border-blue-200 dark:border-blue-700 flex justify-between items-center">
+              <div className="bg-white dark:bg-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-lg">
+                <div className="p-6 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
                   <h3 className="text-xl font-semibold">Request Candidate Shortlisting</h3>
                   <button 
                     onClick={() => setShowShortlistModal(false)}
-                    className="p-1 rounded-full hover:bg-blue-200 dark:hover:bg-blue-700"
+                    className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700"
                   >
                     <XIcon size={24} />
                   </button>
@@ -473,7 +473,7 @@ const Employers = () => {
                           value={shortlistData.companyName}
                           onChange={handleShortlistChange}
                           required
-                          className="input-field"
+                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                           placeholder="e.g. Acme Corporation"
                         />
                       </div>
@@ -486,7 +486,7 @@ const Employers = () => {
                           value={shortlistData.contactName}
                           onChange={handleShortlistChange}
                           required
-                          className="input-field"
+                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                           placeholder="e.g. John Smith"
                         />
                       </div>
@@ -499,7 +499,7 @@ const Employers = () => {
                           value={shortlistData.email}
                           onChange={handleShortlistChange}
                           required
-                          className="input-field"
+                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                           placeholder="e.g. john@company.com"
                         />
                       </div>
@@ -512,7 +512,7 @@ const Employers = () => {
                           value={shortlistData.phone}
                           onChange={handleShortlistChange}
                           required
-                          className="input-field"
+                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                           placeholder="e.g. (555) 123-4567"
                         />
                       </div>
@@ -525,7 +525,7 @@ const Employers = () => {
                           value={shortlistData.position}
                           onChange={handleShortlistChange}
                           required
-                          className="input-field"
+                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                           placeholder="e.g. Senior Developer"
                         />
                       </div>
@@ -538,7 +538,7 @@ const Employers = () => {
                           onChange={handleShortlistChange}
                           rows={4}
                           required
-                          className="input-field resize-none"
+                          className="input-field resize-none bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                           placeholder="Describe the skills, experience, and qualifications you're looking for"
                         ></textarea>
                       </div>
@@ -550,7 +550,7 @@ const Employers = () => {
                           value={shortlistData.timeline}
                           onChange={handleShortlistChange}
                           required
-                          className="input-field"
+                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                         >
                           <option value="" disabled>Select your timeline</option>
                           <option value="Urgent (1-2 weeks)">Urgent (1-2 weeks)</option>
@@ -578,10 +578,10 @@ const Employers = () => {
             </div>
           )}
 
-          {/* Learn More Modal - Implemented directly in the JSX to be consistent with ShortlistModal */}
+          {/* Learn More Modal - Maintained consistency with updated ShortlistModal */}
           {showLearnMoreModal && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-              <div className="bg-white dark:bg-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+              <div className="bg-white dark:bg-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-lg">
                 <div className="p-6 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
                   <h3 className="text-xl font-semibold">Featured Employer Spotlight</h3>
                   <button 
@@ -665,15 +665,15 @@ const Employers = () => {
             </div>
           )}
 
-          {/* Enhance Profile Modal - New Modal */}
+          {/* Enhance Profile Modal - Made consistent with other modals */}
           {showEnhanceProfileModal && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-              <div className="bg-blue-100 dark:bg-blue-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-                <div className="p-6 border-b border-blue-200 dark:border-blue-700 flex justify-between items-center">
+              <div className="bg-white dark:bg-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-lg">
+                <div className="p-6 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
                   <h3 className="text-xl font-semibold">Enhance Your Company Profile</h3>
                   <button 
                     onClick={() => setShowEnhanceProfileModal(false)}
-                    className="p-1 rounded-full hover:bg-blue-200 dark:hover:bg-blue-700"
+                    className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700"
                   >
                     <XIcon size={24} />
                   </button>
@@ -690,7 +690,7 @@ const Employers = () => {
                           value={profileData.companyName}
                           onChange={handleProfileChange}
                           required
-                          className="input-field"
+                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                           placeholder="e.g. Acme Corporation"
                         />
                       </div>
@@ -703,7 +703,7 @@ const Employers = () => {
                           value={profileData.industry}
                           onChange={handleProfileChange}
                           required
-                          className="input-field"
+                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                           placeholder="e.g. Technology, Healthcare"
                         />
                       </div>
@@ -715,7 +715,7 @@ const Employers = () => {
                           value={profileData.companySize}
                           onChange={handleProfileChange}
                           required
-                          className="input-field"
+                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                         >
                           <option value="" disabled>Select company size</option>
                           <option value="1-10 employees">1-10 employees</option>
@@ -734,7 +734,7 @@ const Employers = () => {
                           name="founded"
                           value={profileData.founded}
                           onChange={handleProfileChange}
-                          className="input-field"
+                          className="input-field bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                           placeholder="e.g. 2010"
                         />
                       </div>
@@ -748,7 +748,7 @@ const Employers = () => {
                             name="website"
                             value={profileData.website}
                             onChange={handleProfileChange}
-                            className="input-field flex-1"
+                            className="input-field flex-1 bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                             placeholder="e.g. https://company.com"
                           />
                         </div>
@@ -762,7 +762,7 @@ const Employers = () => {
                           onChange={handleProfileChange}
                           rows={4}
                           required
-                          className="input-field resize-none"
+                          className="input-field resize-none bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                           placeholder="Tell us about your company, its mission, and what makes it unique"
                         ></textarea>
                       </div>
@@ -774,7 +774,7 @@ const Employers = () => {
                           value={profileData.benefits}
                           onChange={handleProfileChange}
                           rows={3}
-                          className="input-field resize-none"
+                          className="input-field resize-none bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                           placeholder="List the benefits and perks you offer to employees"
                         ></textarea>
                       </div>
@@ -786,7 +786,7 @@ const Employers = () => {
                           value={profileData.culture}
                           onChange={handleProfileChange}
                           rows={3}
-                          className="input-field resize-none"
+                          className="input-field resize-none bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                           placeholder="Describe your company culture, values, and work environment"
                         ></textarea>
                       </div>
@@ -800,7 +800,7 @@ const Employers = () => {
                             name="logoUrl"
                             value={profileData.logoUrl}
                             onChange={handleProfileChange}
-                            className="input-field flex-1"
+                            className="input-field flex-1 bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600"
                             placeholder="e.g. https://company.com/logo.png"
                           />
                         </div>
