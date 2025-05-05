@@ -405,7 +405,7 @@ const Employers = () => {
           {/* Shortlist Modal - Implemented directly in the JSX to fix focus issues */}
           {showShortlistModal && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-              <div className="bg-white dark:bg-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+              <div className="bg-gradient-to-b from-blue-50 to-white dark:from-blue-900 dark:to-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
                 <div className="p-6 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
                   <h3 className="text-xl font-semibold">Request Candidate Shortlisting</h3>
                   <button 
