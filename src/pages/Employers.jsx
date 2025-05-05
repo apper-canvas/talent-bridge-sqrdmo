@@ -319,7 +319,7 @@ const Employers = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-primary/5 via-surface-50 to-secondary/5 dark:from-primary/10 dark:via-surface-900 dark:to-secondary/10 min-h-screen">
+    <div className="bg-blue-50 dark:bg-blue-900 min-h-screen">
       <div className="container mx-auto px-4 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
