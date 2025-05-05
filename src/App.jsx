@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
 import getIcon from './utils/iconUtils';
 import Home from './pages/Home';
+import Jobs from './pages/Jobs';
+import Employers from './pages/Employers';
+import About from './pages/About';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -39,17 +42,17 @@ function App() {
     <div className="min-h-screen transition-colors duration-200">
       <header className="sticky top-0 z-10 bg-white/80 dark:bg-surface-900/80 backdrop-blur-md border-b border-surface-200 dark:border-surface-800">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <div className="h-9 w-9 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">TB</span>
             </div>
             <h1 className="text-xl font-bold text-surface-900 dark:text-white">TalentBridge</h1>
-          </a>
+          </Link>
           
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#jobs" className="text-surface-600 hover:text-primary dark:text-surface-300 dark:hover:text-white font-medium">Find Jobs</a>
-            <a href="#employers" className="text-surface-600 hover:text-primary dark:text-surface-300 dark:hover:text-white font-medium">For Employers</a>
-            <a href="#about" className="text-surface-600 hover:text-primary dark:text-surface-300 dark:hover:text-white font-medium">About Us</a>
+            <Link to="/jobs" className="text-surface-600 hover:text-primary dark:text-surface-300 dark:hover:text-white font-medium">Find Jobs</Link>
+            <Link to="/employers" className="text-surface-600 hover:text-primary dark:text-surface-300 dark:hover:text-white font-medium">For Employers</Link>
+            <Link to="/about" className="text-surface-600 hover:text-primary dark:text-surface-300 dark:hover:text-white font-medium">About Us</Link>
           </nav>
           
           <div className="flex items-center gap-3">
@@ -77,6 +80,9 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/employers" element={<Employers />} />
+          <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
@@ -91,9 +97,9 @@ function App() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="#jobs" className="hover:underline">Browse Jobs</a></li>
-                <li><a href="#employers" className="hover:underline">Post a Job</a></li>
-                <li><a href="#about" className="hover:underline">About Us</a></li>
+                <li><Link to="/jobs" className="hover:underline">Browse Jobs</Link></li>
+                <li><Link to="/employers" className="hover:underline">Post a Job</Link></li>
+                <li><Link to="/about" className="hover:underline">About Us</Link></li>
               </ul>
             </div>
             <div>
