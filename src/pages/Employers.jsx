@@ -1,18 +1,86 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { toast } from 'react-toastify';
-import { toast } from 'react-toastify';
-import getIcon from '../utils/iconUtils';
+  
+  const handleSpotlightRequest = () => {
+    toast.success('Spotlight request submitted! Your company will be featured in our next spotlight.', {
+      position: "bottom-right",
+      autoClose: 3000,
+    });
+    setShowLearnMoreModal(false);
+  };
 
-const Employers = () => {
-  const [formData, setFormData] = useState({
-    jobTitle: '',
-    company: '',
+          {/* Enhance Profile Modal */}
+                </div>              
     location: '',
     jobType: '',
     salary: '',
     description: '',
-    requirements: '',
+          {/* Learn More Modal */}
+          {showLearnMoreModal && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+              <div className="bg-white dark:bg-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-lg">
+                <div className="p-6 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
+                  <h3 className="text-xl font-semibold">Employer Spotlight Program</h3>
+                  <button 
+                    onClick={() => setShowLearnMoreModal(false)}
+                    className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700"
+                  >
+                    <XIcon size={24} />
+                  </button>
+                </div>
+                <div className="p-6">
+                  <h4 className="text-lg font-semibold mb-4">Benefits of the Spotlight Program</h4>
+                  <ul className="space-y-3 mb-6">
+                    <li className="flex items-start gap-2">
+                      <CheckCircleIcon size={20} className="text-primary mt-1 flex-shrink-0" />
+                      <span>Featured placement on our homepage for one week</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircleIcon size={20} className="text-primary mt-1 flex-shrink-0" />
+                      <span>Highlighted in our weekly newsletter to 100,000+ job seekers</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircleIcon size={20} className="text-primary mt-1 flex-shrink-0" />
+                      <span>Custom branded content about your company culture and benefits</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircleIcon size={20} className="text-primary mt-1 flex-shrink-0" />
+                      <span>Priority ranking in job search results for all your listings</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircleIcon size={20} className="text-primary mt-1 flex-shrink-0" />
+                      <span>Social media promotion across all our platforms</span>
+                    </li>
+                  </ul>
+                  
+                  <div className="bg-surface-50 dark:bg-surface-900 p-4 rounded-lg mb-6">
+                    <h5 className="font-medium mb-2">Spotlight Success Story</h5>
+                    <p className="text-surface-600 dark:text-surface-300 text-sm italic">
+                      "After being featured in the Employer Spotlight, we saw a 300% increase in qualified applications and filled our open positions within two weeks!" — Maria G., Recruitment Manager
+                    </p>
+                  </div>
+                  
+                  <div className="mt-6 flex justify-end gap-4">
+                    <button 
+                      type="button" 
+                      onClick={() => setShowLearnMoreModal(false)}
+                      className="btn-ghost"
+                    >
+                      Cancel
+                    </button>
+                    <button 
+                      onClick={handleSpotlightRequest} 
+                      className="btn-primary"
+                    >
+                      Request Spotlight
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Shortlist Modal */}
     email: '',
     phone: ''
   });
