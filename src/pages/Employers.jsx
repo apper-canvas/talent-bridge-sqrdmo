@@ -1,15 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-  
-  const handleSpotlightRequest = () => {
-    toast.success('Spotlight request submitted! Your company will be featured in our next spotlight.', {
-      position: "bottom-right",
-      autoClose: 3000,
-    });
-    setShowLearnMoreModal(false);
-  };
-
-          {/* Enhance Profile Modal */}
+import { toast } from 'react-toastify';
+import getIcon from '../utils/iconUtils';
                 </div>              
     location: '',
     jobType: '',
@@ -112,6 +104,18 @@ import { motion } from 'framer-motion';
     logoUrl: '',
   });
 
+  const [formData, setFormData] = useState({
+    jobTitle: '',
+    company: '',
+    location: '',
+    jobType: '',
+    salary: '',
+    description: '',
+    requirements: '',
+    email: '',
+    phone: ''
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -132,6 +136,14 @@ import { motion } from 'framer-motion';
       ...prevData,
       [name]: value
     }));
+  };
+
+  const handleSpotlightRequest = () => {
+    toast.success('Spotlight request submitted! Your company will be featured in our next spotlight.', {
+      position: "bottom-right",
+      autoClose: 3000,
+    });
+    setShowLearnMoreModal(false);
   };
 
   const handleSubmit = (e) => {
@@ -515,21 +527,15 @@ import { motion } from 'framer-motion';
                   </button>
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-surface-100 to-surface-200 dark:from-surface-800 dark:to-surface-700 rounded-lg p-6 flex flex-col items-center justify-center backdrop-blur-sm mt-6">
-                  <h4 className="text-lg font-medium text-center mb-2">Want to learn more?</h4>
-                  <p className="text-center mb-4">Discover the benefits of our spotlight program and how it can help your company stand out.</p>
-                  <button className="btn-outline" onClick={() => setShowLearnMoreModal(true)}>
-                    Learn More
-                    Request Spotlight
-                  </button>
-                </div>
               </div>
               <div className="bg-gradient-to-br from-surface-100 to-surface-200 dark:from-surface-800 dark:to-surface-700 rounded-lg p-6 flex flex-col items-center justify-center backdrop-blur-sm mt-6">
+              
                   <h4 className="text-lg font-medium text-center mb-2">Want to learn more?</h4>
-                  <p className="text-center mb-4">Discover the benefits of our spotlight program and how it can help your company stand out.</p>
-                  <button className="btn-outline" onClick={() => setShowLearnMoreModal(true)}>
-                    Learn More
-                </div>
+                <h4 className="text-lg font-medium text-center mb-2">Want to learn more?</h4>
+                <p className="text-center mb-4">Discover the benefits of our spotlight program and how it can help your company stand out.</p>
+                <button className="btn-outline" onClick={() => setShowLearnMoreModal(true)}>
+                  Learn More
+                </button>
               </div>
             </div>
           </section>
