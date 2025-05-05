@@ -34,9 +34,13 @@ const Employers = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  // Fixed handleShortlistChange function to properly update state
   const handleShortlistChange = (e) => {
     const { name, value } = e.target;
-    setShortlistData(prev => ({ ...prev, [name]: value }));
+    setShortlistData(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
   };
 
   const handleSubmit = (e) => {
