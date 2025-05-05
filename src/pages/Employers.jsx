@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { toast } from 'react-toastify';
-import getIcon from '../utils/iconUtils';
-                </div>              
-    location: '',
-    jobType: '',
-    salary: '',
-    description: '',
+  // Icon declarations
+
           {/* Learn More Modal */}
           {showLearnMoreModal && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
@@ -72,10 +67,13 @@ import getIcon from '../utils/iconUtils';
             </div>
           )}
 
-          {/* Shortlist Modal */}
-    email: '',
-    phone: ''
-  });
+          {/* Spotlight Modal */}
+          {showSpotlightModal && (
+            /* Implementation would go here */
+            null
+          )}
+import { toast } from 'react-toastify';
+import getIcon from '../utils/iconUtils'; 
 
   // State for modals
   const [showShortlistModal, setShowShortlistModal] = useState(false);
