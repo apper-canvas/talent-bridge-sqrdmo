@@ -19,6 +19,7 @@ const Employers = () => {
   // State for modals
   const [showShortlistModal, setShowShortlistModal] = useState(false);
   const [showLearnMoreModal, setShowLearnMoreModal] = useState(false);
+  const [showEnhanceProfileModal, setShowEnhanceProfileModal] = useState(false);
   const [shortlistData, setShortlistData] = useState({
     companyName: '',
     contactName: '',
@@ -27,6 +28,18 @@ const Employers = () => {
     position: '',
     requirements: '',
     timeline: '',
+  });
+
+  const [profileData, setProfileData] = useState({
+    companyName: '',
+    industry: '',
+    companySize: '',
+    founded: '',
+    website: '',
+    companyDescription: '',
+    benefits: '',
+    culture: '',
+    logoUrl: '',
   });
 
   const handleChange = (e) => {
@@ -38,6 +51,14 @@ const Employers = () => {
   const handleShortlistChange = (e) => {
     const { name, value } = e.target;
     setShortlistData(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  const handleProfileChange = (e) => {
+    const { name, value } = e.target;
+    setProfileData(prevData => ({
       ...prevData,
       [name]: value
     }));
@@ -82,6 +103,26 @@ const Employers = () => {
     setShowShortlistModal(false);
   };
 
+  const handleProfileSubmit = (e) => {
+    e.preventDefault();
+    toast.success('Profile enhancement request submitted! Your company profile will be updated soon.', {
+      position: "bottom-right",
+      autoClose: 3000,
+    });
+    setProfileData({
+      companyName: '',
+      industry: '',
+      companySize: '',
+      founded: '',
+      website: '',
+      companyDescription: '',
+      benefits: '',
+      culture: '',
+      logoUrl: '',
+    });
+    setShowEnhanceProfileModal(false);
+  };
+
   const BuildingIcon = getIcon('Building');
   const UsersIcon = getIcon('Users');
   const CheckCircleIcon = getIcon('CheckCircle');
@@ -96,6 +137,8 @@ const Employers = () => {
   const AwardIcon = getIcon('Award');
   const TrendingUpIcon = getIcon('TrendingUp');
   const UsersRoundIcon = getIcon('UsersRound');
+  const GlobeIcon = getIcon('Globe');
+  const ImageIcon = getIcon('Image');
 
   return (
     <div className="bg-blue-50 dark:bg-blue-900 min-h-screen">
@@ -386,7 +429,10 @@ const Employers = () => {
                       <span>Highlight your benefits, perks and company values</span>
                     </li>
                   </ul>
-                  <button className="btn-secondary" onClick={() => toast.info('Coming soon! Enhanced employer profiles will be available next month.', { position: "bottom-right" })}>
+                  <button 
+                    className="btn-secondary" 
+                    onClick={() => setShowEnhanceProfileModal(true)}
+                  >
                     Enhance Your Profile
                   </button>
                 </div>
@@ -614,6 +660,168 @@ const Employers = () => {
                       Request Spotlight
                     </button>
                   </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Enhance Profile Modal - New Modal */}
+          {showEnhanceProfileModal && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+              <div className="bg-blue-100 dark:bg-blue-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+                <div className="p-6 border-b border-blue-200 dark:border-blue-700 flex justify-between items-center">
+                  <h3 className="text-xl font-semibold">Enhance Your Company Profile</h3>
+                  <button 
+                    onClick={() => setShowEnhanceProfileModal(false)}
+                    className="p-1 rounded-full hover:bg-blue-200 dark:hover:bg-blue-700"
+                  >
+                    <XIcon size={24} />
+                  </button>
+                </div>
+                <div className="p-6">
+                  <form onSubmit={handleProfileSubmit}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label htmlFor="companyName" className="block text-sm font-medium mb-2">Company Name</label>
+                        <input
+                          type="text"
+                          id="companyName"
+                          name="companyName"
+                          value={profileData.companyName}
+                          onChange={handleProfileChange}
+                          required
+                          className="input-field"
+                          placeholder="e.g. Acme Corporation"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="industry" className="block text-sm font-medium mb-2">Industry</label>
+                        <input
+                          type="text"
+                          id="industry"
+                          name="industry"
+                          value={profileData.industry}
+                          onChange={handleProfileChange}
+                          required
+                          className="input-field"
+                          placeholder="e.g. Technology, Healthcare"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="companySize" className="block text-sm font-medium mb-2">Company Size</label>
+                        <select
+                          id="companySize"
+                          name="companySize"
+                          value={profileData.companySize}
+                          onChange={handleProfileChange}
+                          required
+                          className="input-field"
+                        >
+                          <option value="" disabled>Select company size</option>
+                          <option value="1-10 employees">1-10 employees</option>
+                          <option value="11-50 employees">11-50 employees</option>
+                          <option value="51-200 employees">51-200 employees</option>
+                          <option value="201-500 employees">201-500 employees</option>
+                          <option value="501-1000 employees">501-1000 employees</option>
+                          <option value="1001+ employees">1001+ employees</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label htmlFor="founded" className="block text-sm font-medium mb-2">Founded Year</label>
+                        <input
+                          type="text"
+                          id="founded"
+                          name="founded"
+                          value={profileData.founded}
+                          onChange={handleProfileChange}
+                          className="input-field"
+                          placeholder="e.g. 2010"
+                        />
+                      </div>
+                      <div className="md:col-span-2">
+                        <label htmlFor="website" className="block text-sm font-medium mb-2">Company Website</label>
+                        <div className="flex items-center space-x-2">
+                          <GlobeIcon size={20} className="text-surface-500" />
+                          <input
+                            type="url"
+                            id="website"
+                            name="website"
+                            value={profileData.website}
+                            onChange={handleProfileChange}
+                            className="input-field flex-1"
+                            placeholder="e.g. https://company.com"
+                          />
+                        </div>
+                      </div>
+                      <div className="md:col-span-2">
+                        <label htmlFor="companyDescription" className="block text-sm font-medium mb-2">Company Description</label>
+                        <textarea
+                          id="companyDescription"
+                          name="companyDescription"
+                          value={profileData.companyDescription}
+                          onChange={handleProfileChange}
+                          rows={4}
+                          required
+                          className="input-field resize-none"
+                          placeholder="Tell us about your company, its mission, and what makes it unique"
+                        ></textarea>
+                      </div>
+                      <div className="md:col-span-2">
+                        <label htmlFor="benefits" className="block text-sm font-medium mb-2">Benefits & Perks</label>
+                        <textarea
+                          id="benefits"
+                          name="benefits"
+                          value={profileData.benefits}
+                          onChange={handleProfileChange}
+                          rows={3}
+                          className="input-field resize-none"
+                          placeholder="List the benefits and perks you offer to employees"
+                        ></textarea>
+                      </div>
+                      <div className="md:col-span-2">
+                        <label htmlFor="culture" className="block text-sm font-medium mb-2">Company Culture</label>
+                        <textarea
+                          id="culture"
+                          name="culture"
+                          value={profileData.culture}
+                          onChange={handleProfileChange}
+                          rows={3}
+                          className="input-field resize-none"
+                          placeholder="Describe your company culture, values, and work environment"
+                        ></textarea>
+                      </div>
+                      <div className="md:col-span-2">
+                        <label htmlFor="logoUrl" className="block text-sm font-medium mb-2">Company Logo URL</label>
+                        <div className="flex items-center space-x-2">
+                          <ImageIcon size={20} className="text-surface-500" />
+                          <input
+                            type="url"
+                            id="logoUrl"
+                            name="logoUrl"
+                            value={profileData.logoUrl}
+                            onChange={handleProfileChange}
+                            className="input-field flex-1"
+                            placeholder="e.g. https://company.com/logo.png"
+                          />
+                        </div>
+                        <p className="text-xs text-surface-500 mt-1">
+                          Submit a URL to your company logo (ideal dimensions: 400x400px)
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mt-8 flex justify-end gap-4">
+                      <button 
+                        type="button" 
+                        onClick={() => setShowEnhanceProfileModal(false)}
+                        className="btn-ghost"
+                      >
+                        Cancel
+                      </button>
+                      <button type="submit" className="btn-primary">
+                        Submit Profile
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
