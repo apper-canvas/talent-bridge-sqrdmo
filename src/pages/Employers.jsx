@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import getIcon from '../utils/iconUtils';
 
 const Employers = () => {
@@ -19,6 +20,7 @@ const Employers = () => {
   // State for modals
   const [showShortlistModal, setShowShortlistModal] = useState(false);
   const [showLearnMoreModal, setShowLearnMoreModal] = useState(false);
+  const [showSpotlightModal, setShowSpotlightModal] = useState(false);
   const [showEnhanceProfileModal, setShowEnhanceProfileModal] = useState(false);
   const [shortlistData, setShortlistData] = useState({
     companyName: '',
@@ -440,9 +442,25 @@ const Employers = () => {
                   <FileTextIcon size={64} className="text-primary mb-4" />
                   <h4 className="text-lg font-medium text-center mb-2">Featured Employer Spotlight</h4>
                   <p className="text-center mb-4">Get featured in our weekly employer spotlight and reach thousands of active job seekers.</p>
+                  <button className="btn-outline" onClick={() => setShowSpotlightModal(true)}>
+                    Request Spotlight
+                  </button>
+                </div>
+              </div>
+              <div className="bg-gradient-to-br from-surface-100 to-surface-200 dark:from-surface-800 dark:to-surface-700 rounded-lg p-6 flex flex-col items-center justify-center backdrop-blur-sm mt-6">
+                  <h4 className="text-lg font-medium text-center mb-2">Want to learn more?</h4>
+                  <p className="text-center mb-4">Discover the benefits of our spotlight program and how it can help your company stand out.</p>
                   <button className="btn-outline" onClick={() => setShowLearnMoreModal(true)}>
                     Learn More
+                    Request Spotlight
                   </button>
+                </div>
+              </div>
+              <div className="bg-gradient-to-br from-surface-100 to-surface-200 dark:from-surface-800 dark:to-surface-700 rounded-lg p-6 flex flex-col items-center justify-center backdrop-blur-sm mt-6">
+                  <h4 className="text-lg font-medium text-center mb-2">Want to learn more?</h4>
+                  <p className="text-center mb-4">Discover the benefits of our spotlight program and how it can help your company stand out.</p>
+                  <button className="btn-outline" onClick={() => setShowLearnMoreModal(true)}>
+                    Learn More
                 </div>
               </div>
             </div>
@@ -573,93 +591,6 @@ const Employers = () => {
                       </button>
                     </div>
                   </form>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Learn More Modal - Maintained consistency with updated ShortlistModal */}
-          {showLearnMoreModal && (
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-              <div className="bg-white dark:bg-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-lg">
-                <div className="p-6 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
-                  <h3 className="text-xl font-semibold">Featured Employer Spotlight</h3>
-                  <button 
-                    onClick={() => setShowLearnMoreModal(false)}
-                    className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700"
-                  >
-                    <XIcon size={24} />
-                  </button>
-                </div>
-                <div className="p-6">
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold mb-2">What is Employer Spotlight?</h4>
-                    <p className="mb-4">
-                      The Featured Employer Spotlight is a premium service that highlights your company to thousands of active job seekers on our platform, increasing your visibility and attracting top talent.
-                    </p>
-                  </div>
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold mb-2">Benefits Include:</h4>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-2">
-                        <AwardIcon size={20} className="text-primary mt-1 flex-shrink-0" />
-                        <span>Featured placement on our homepage and job search results</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <TrendingUpIcon size={20} className="text-primary mt-1 flex-shrink-0" />
-                        <span>150% more profile views compared to standard listings</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <UsersRoundIcon size={20} className="text-primary mt-1 flex-shrink-0" />
-                        <span>Dedicated email campaign to relevant candidates</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircleIcon size={20} className="text-primary mt-1 flex-shrink-0" />
-                        <span>Professional company feature article on our blog</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <FileTextIcon size={20} className="text-primary mt-1 flex-shrink-0" />
-                        <span>Enhanced company profile with multimedia capabilities</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold mb-2">Pricing:</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="border border-surface-200 dark:border-surface-700 rounded-lg p-4">
-                        <h5 className="font-medium mb-2">Monthly Spotlight</h5>
-                        <p className="text-2xl font-bold mb-2">$499</p>
-                        <p className="text-sm">Featured for 4 weeks with all benefits</p>
-                      </div>
-                      <div className="border border-primary/30 rounded-lg p-4 bg-primary/5">
-                        <h5 className="font-medium mb-2">Quarterly Spotlight</h5>
-                        <p className="text-2xl font-bold mb-2">$1,299</p>
-                        <p className="text-sm">Featured for 12 weeks (save over 13%)</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-6 flex justify-end gap-4">
-                    <button 
-                      type="button" 
-                      onClick={() => setShowLearnMoreModal(false)}
-                      className="btn-ghost"
-                    >
-                      Close
-                    </button>
-                    <button 
-                      type="button" 
-                      onClick={() => {
-                        setShowLearnMoreModal(false);
-                        toast.success('Request sent! Our team will contact you about the Employer Spotlight program.', {
-                          position: "bottom-right",
-                          autoClose: 3000,
-                        });
-                      }}
-                      className="btn-primary"
-                    >
-                      Request Spotlight
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
