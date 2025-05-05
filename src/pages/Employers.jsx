@@ -402,15 +402,15 @@ const Employers = () => {
             </div>
           </section>
 
-          {/* Shortlist Modal - Implemented directly in the JSX to fix focus issues */}
+          {/* Shortlist Modal - Changed background color to light blue */}
           {showShortlistModal && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-              <div className="bg-gradient-to-b from-blue-50 to-white dark:from-blue-900 dark:to-surface-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-                <div className="p-6 border-b border-surface-200 dark:border-surface-700 flex justify-between items-center">
+              <div className="bg-blue-100 dark:bg-blue-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+                <div className="p-6 border-b border-blue-200 dark:border-blue-700 flex justify-between items-center">
                   <h3 className="text-xl font-semibold">Request Candidate Shortlisting</h3>
                   <button 
                     onClick={() => setShowShortlistModal(false)}
-                    className="p-1 rounded-full hover:bg-surface-100 dark:hover:bg-surface-700"
+                    className="p-1 rounded-full hover:bg-blue-200 dark:hover:bg-blue-700"
                   >
                     <XIcon size={24} />
                   </button>
